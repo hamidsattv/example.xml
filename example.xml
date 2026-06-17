@@ -1,0 +1,185 @@
+<skin>
+<!-- cf#_#start -->
+<!--
+	#description#- Example Skinpart -
+	#description#Please look in the example.xml file for function.
+	#description#
+	#description#- Beispiel Skinpart -
+	#description#Bitte sehen sie in der example.xml Datei für die Funktionsweise nach.
+	#previewfile#example.png
+/-->
+	<screen name="#deactivated#CLOCKWIDGET">
+<!--
+		#description#clock-widget without date
+		#description#Uhr-Widget ohne Datumsanzeige
+		#previewfile#CLOCKWIDGET.png
+/-->
+		<eLabel backgroundColor="layer-a-background" position="1076,40" size="164,71" transparent="0" zPosition="-1"/>
+		<widget backgroundColor="layer-a-background" foregroundColor="layer-a-clock-foreground" font="global_clock; 60" noWrap="1" valign="bottom" halign="center" position="1075,44" render="Label" size="164,70" source="global.CurrentTime" transparent="1" >
+			<convert type="ClockToText">Default</convert>
+		</widget>
+	</screen>
+	<screen name="Volume" position="center,40" size="335,71" title="Volume" flags="wfNoBorder" backgroundColor="transparent" zPosition="99">
+<!--
+		an alternative to the other two examples can also * .txt files for the description and * .png or * .jpg files for thumbnails in [skinpart] directory are used.
+		alternativ zu den beiden anderen Beispielen können auch *.txt Dateien für die Beschreibung und *.png oder *.jpg Dateien für Vorschaubilder im [skinpart] Verzeichnis genutzt werden.
+/-->
+		<widget name="Volume" position="78,33" size="178,5" zPosition="3" foregroundColor="layer-a-progress" transparent="1" />
+		<ePixmap position="8,4" size="64,64" zPosition="1" pixmap="MetrixHD/icons/volume.png" transparent="1" alphatest="blend" />
+		<widget font="screen_info;40" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" halign="center" valign="bottom" render="MetrixHDVolumeText" source="global.CurrentTime" position="250,12" size="85,50" zPosition="20" transparent="1" />
+		<eLabel position="78,35" size="178,1" backgroundColor="layer-a-accent1" foregroundColor="layer-a-accent1" />
+		<eLabel position="1,1" size="333,69" backgroundColor="layer-a-background" zPosition="-1" transparent="0" />
+		<eLabel position="0,0" size="335,71" backgroundColor="layer-b-background" zPosition="-2" transparent="0" />
+	</screen>
+	
+	<screen name="SKINPART_infobar">#hide#
+<!--
+	if #hide# in row from screen will screen in skinpart settings not displayed
+	wenn #hide' in der Zeile des screens steht wird er in den Skinpart Einstellungen nicht angezeigt
+/-->
+<!--
+		see in skin_00_templates.xml (at end) for another available SKINPART_xxx screens.
+		in der skin_00_templates.xml (am Ende) sind mögliche nutzbare SKINPART_xxx for andere screens. 
+/-->
+		<panel name="CAMname"/>
+		<panel name="xtraposterforInfobar"/>
+		<panel name="xtraposterforInfobaroneposter"/>		
+		<panel name="posterxforInfobar"/>
+		<panel name="posterxforInfobaroneposter"/>		
+		<panel name="ipaddressforInfobar"/>
+		<panel name="signalforInfobar"/>
+		<panel name="CHANNELNAMEMOD"/>
+	</screen>
+	<screen name="SKINPART_secondinfobar">#hide#
+<!--
+	if #hide# in row from screen will screen in skinpart settings not displayed
+	wenn #hide' in der Zeile des screens steht wird er in den Skinpart Einstellungen nicht angezeigt
+/-->
+<!--
+		see in skin_00_templates.xml (at end) for another available SKINPART_xxx screens.
+		in der skin_00_templates.xml (am Ende) sind mögliche nutzbare SKINPART_xxx for andere screens. 
+/-->
+		<panel name="ServiceInfoForInfobar"/>
+	</screen>
+	<screen name="ServiceInfoForInfobar">
+<!--
+		#description#Additional screen for infobar
+		#description#Zusätzliche Anzeige für die Infobar
+		#previewfile#SKINPART_infobar.png
+/-->
+		<widget source="session.CurrentService" render="Label" font="global_small; 33" position="center,250" size="3000,700" halign="center" zPosition="1" backgroundColor="layer-b-background" foregroundColor="layer-b-foreground" >
+			<convert type="ServiceName2">%P - %N (%A, %T)</convert>
+		</widget>
+	</screen>
+	<screen name="CAMname">
+<!--
+		#description#CAM name screen for infobar by MNASR
+		#previewfile#SKINPART_infobar.png
+/-->
+		<widget source="session.CurrentService" render="Label"
+position="290,505" size="699,25"
+font="Regular;17"
+backgroundColor="#70000000"
+foregroundColor="layer-b-foreground"
+transparent="0"
+halign="right"
+valign="center"> text="BitRate" valign="center">
+			<convert type="MetrixHDBitrate">VideoBitrateUnits</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" font="global_small; 16" position="290,545" size="399,20" halign="center" zPosition="1" backgroundColor="layer-b-background" foregroundColor="layer-b-foreground">
+			<convert type="MetrixHDaccess">CamName</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" font="global_small; 16" position="690,545" size="300,20" halign="center" zPosition="1" backgroundColor="layer-b-background" foregroundColor="layer-b-foreground">
+			<convert type="MetrixHDCaidInfo2">CryptInfo2</convert>
+		</widget>
+	</screen>
+	<screen name="#deactivated#xtraposterforInfobar">
+<!--
+		#description#xtraevent poster screen for infobar by MNASR
+		#previewfile#poster_infobar.png
+/-->
+		<widget source="session.Event_Now" render="xtraPoster" position="35,212" size="185,278" zPosition="9" cornerRadius="20"/>
+        <widget source="session.Event_Next" render="xtraPoster" position="1060,212" size="185,278" zPosition="9" cornerRadius="20"/>
+	</screen>
+	<screen name="#deactivated#xtraposterforInfobaroneposter">
+<!--
+		#description#xtraevent poster screen for infobar by Haitham
+		#previewfile#poster_infobar_one.jpg
+/-->
+		<widget source="session.Event_Now" render="xtraPoster" position="1060,212" size="185,278" zPosition="9" cornerRadius="20"/>
+	</screen>
+	<screen name="#deactivated#posterxforInfobar">
+<!--
+		#description#posterx poster screen for infobar by MNASR
+		#previewfile#poster_infobar.png
+/-->
+	<widget source="session.Event_Now" render="MetrixHDPosterX" position="35,212" size="185,278" zPosition="8" cornerRadius="20"/>
+    <widget source="session.Event_Now" render="MetrixHDPosterX" nexts="1" position="1060,212" size="185,278" zPosition="8" cornerRadius="20"/>
+ 	</screen>
+	<screen name="posterxforInfobaroneposter">
+<!--
+		#description#posterx poster screen for infobar by Haitham
+		#previewfile#poster_infobar_one.jpg
+/-->
+	<widget source="session.Event_Now" render="MetrixHDPosterX" position="1060,212" size="185,278" zPosition="8" cornerRadius="20"/>
+	</screen>
+	<screen name="#deactivated#ipaddressforInfobar">
+<!--
+		#description#show IP address for infobar by MNASR
+		#previewfile#IP_infobar.png
+/-->
+		<widget source="session.CurrentService" render="Label" font="Regular; 22" position="1040,536" size="190,30" halign="right" zPosition="1" backgroundColor="layer-b-background" foregroundColor="layer-b-foreground">
+			<convert type="MetrixHDTemp">Iplocal</convert>
+        </widget>
+		<widget alphatest="blend" pixmap="/usr/share/enigma2/MetrixHD/skinparts/example/lan_on.png" position="1044,542" render="Pixmap" size="50,30" source="session.CurrentService" transparent="0" zPosition="88">
+			<convert type="MetrixHDRouteInfo">Lan</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget alphatest="blend" pixmap="/usr/share/enigma2/MetrixHD/skinparts/example/wi_on.png" position="1044,542" render="Pixmap" size="50,30" source="session.CurrentService" transparent="0" zPosition="77">
+			<convert type="MetrixHDRouteInfo">Wifi</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel name="" position="1044,536" size="200,30" backgroundColor="layer-b-background" foregroundColor="layer-b-background" />
+	</screen>
+<screen name="signalforInfobar">
+<!--
+		#description#SNR & AGC for infobar by MNASR
+		#previewfile#signal_infobar.png
+/-->
+
+<widget source="session.CurrentService" render="Label"
+position="290,505" size="700,20"
+font="Regular;18"
+backgroundColor="layer-b-background"
+foregroundColor="layer-b-foreground"
+transparent="1">
+    <convert type="MetrixHDServName2">%S   %F  %p  %Y</convert>
+</widget>
+
+	<eLabel name="" position="290,525" size="700,20" backgroundColor="layer-b-background" foregroundColor="layer-b-background" zPosition="-1" borderWidth="1" borderColor="layer-a-background" />
+<widget source="session.FrontendStatus" render="Progress" position="356,534" size="200,6" backgroundColor="#002d2d2d" foregroundGradient="red, yellow, green, horizontal" transparent="1" zPosition="5" cornerRadius="3">
+  <convert type="FrontendInfo">SNR</convert>
+</widget>
+<widget source="session.FrontendStatus" render="Label" position="564,525" size="65,20" font="Regular; 18" backgroundColor="layer-b-background" halign="left" transparent="1">
+  <convert type="FrontendInfo">SNR</convert>
+</widget>
+<eLabel name="" position="290,525" size="60,20" text="SNR:" font="Regular; 18" backgroundColor="layer-b-background" halign="right" />
+<eLabel name="" position="640,525" size="60,20" text="AGC:" font="Regular; 18" backgroundColor="layer-b-background" halign="right" />
+<widget source="session.FrontendStatus" render="Progress" position="710,534" size="200,6" backgroundColor="#002d2d2d" foregroundGradient="red, yellow, green, horizontal" transparent="1" zPosition="5" cornerRadius="3">
+  <convert type="FrontendInfo">AGC</convert>
+</widget>
+<widget source="session.FrontendStatus" render="Label" position="920,525" size="65,20" font="Regular; 18" backgroundColor="layer-b-background" halign="left" transparent="1">
+  <convert type="FrontendInfo">AGC</convert>
+</widget>
+	</screen>
+	<screen name="#deactivated#CHANNELNAMEMOD">
+<!--
+		#description#channel name mod for infobar by MNASR
+		#previewfile#channel name mod.png
+/-->
+<widget font="Regular; 42" backgroundColor="text-background" foregroundColor="background-text" noWrap="1" position="30,488" render="Label" size="1252,46" source="session.CurrentService" transparent="1" valign="bottom" zPosition="-30">
+		<convert type="MetrixHDExtServiceInfo">ServiceNumberAndName</convert>
+</widget>
+	</screen>
+</skin>
+
